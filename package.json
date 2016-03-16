@@ -1,0 +1,30 @@
+{
+  "name": "form-validation",
+  "version": "1.0.0",
+  "description": "for controller vm log in credential",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlysiaWu/form-validation.git"
+  },
+  "keywords": [
+    "login"
+  ],
+  "author": "Alysia WU",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlysiaWu/form-validation/issues"
+  },
+  "homepage": "https://github.com/AlysiaWu/form-validation#readme",
+  "dependencies" : {
+    "express": "*",
+    "cookie-parser": "*",
+    "body-parser": "*",
+    
+
+  } 
+}
