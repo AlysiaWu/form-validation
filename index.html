@@ -2,19 +2,19 @@
 <html>
 <head>
 <title>Controller VM log in</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
 
 <strong>Controller VM log in Credentials</strong>
 <div class="pull-right" style="line-height: 58px">
-    <i class="icon-user"></i><span id="username"></span>
+    <i class="icon-user"></i><span id="currentUser"></span>
 </div>
 <form>
 	<a class="popoverInput" rel="popover"
 	title="" data-original-title="Controller VM User Name"
 	data-content="Controller VM User Name">
-	<i class="icon-info-sign"></i>
 	</a>
 </p>
 
@@ -62,27 +62,48 @@
 
 
 <script type="text/javascript">
+var currentUser;
+if (currentUser) {
+	
+}
 $('#ctlvmLoginSubmit').click(validateCtl);
 
 function validateCtl() {
-
+	var isLogin;
 	var errorMsg = {};
 	var ctlVMUserName = $("#ctlvmUsernameLogin").val();
 	console.log("ctlVMUserName" + ctlVMUserName);
-	debugger;
 	var ctlVMPassword = $("#ctlvmPasswordLogin").val();
 	console.log("ctlVMPassword" + ctlVMPassword);
 
-		if (ctlVMUserName.length || ctlVMUserName != null) {
-		message['ctlVMUserName'] = 'Controller VM log in User name cannot be empty';
+	if (ctlVMUserName.length == 0  || ctlVMUserName == null) {
+		errorMsg['ctlVMUserName'] = 'Controller VM log in User name cannot be empty';
 	}
-	if (ctlVMPassword.length || ctlVMPassword != null) {
-		message['ctlVMPassword'] = 'Controller VM log in Password cannot be empty';	
+	if (ctlVMPassword.length == 0 || ctlVMPassword == null) {
+		errorMsg['ctlVMPassword'] = 'Controller VM log in Password cannot be empty';	
 	}
 
-	if($.isEmptyObject(message) === false) {
-		console.log("msg" + message);
+	if($.isEmptyObject(errorMsg) === false) {
+		console.log("msg" + errorMsg['ctlVMUserName']);
+		if (errorMsg['ctlVMUserName'].length > 0) {
+			$("<span class = 'error'>" + errorMsg['ctlVMUserName']+ "</span>").insertAfter("#ctlvmUsernameLogin");
+		}
+		if (errorMsg['ctlVMPassword'].length > 0) {
+			$("<span class = 'error'>" + errorMsg['ctlVMPassword']+ "</span>").insertAfter("#ctlvmPasswordLogin");
+		}
 	}
+
+	if (ctlVMUserName === "root" && ctlVMPassword == "Cisco123") {
+		isLogin == true;
+		console.log("ya");
+		currentUser = "root";
+		$("#currentUser")[0].innerHTML = "root";
+	} 
+	else if (ctlVMUserName !== "root" || ctlVMPassword !== "Cisco123") {
+		errorMsg['loginError'] = "the login credential failed";
+		alert(errorMsg['loginError']);
+	}
+return false;
 
 }
 
