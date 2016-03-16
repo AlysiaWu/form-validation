@@ -2,15 +2,17 @@
 <html>
 <head>
 <title>Controller VM log in</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
 
+<label for="userName">User Name: </label> <input id = "userName" type = "text" name = "userName" required></input><br>
+<label for="password">Password: </label> <input id = "password" type = "password" name = "password" required></input><br>
+<input type = "submit" value = "Submit"></input>
+
+
+
 <strong>Controller VM log in Credentials</strong>
-<div class="pull-right" style="line-height: 58px">
-    <i class="icon-user"></i><span id="username"></span>
-</div>
-<form>
+<form onsumbit = "validateCtl()">
 	<a class="popoverInput" rel="popover"
 	title="" data-original-title="Controller VM User Name"
 	data-content="Controller VM User Name">
@@ -59,34 +61,27 @@
 </div> 
 </form>
 <!--  End of Controller VM log in -->
+<!-- in the summary.js -->
+// <script type="text/javascript">
+
+// function validateCtl(){
+// 	var errorMsg = {};
+// 	var ctlVMUserName = document.getElementById("userName").value;
+// 	var ctlVMPassword = document.getElementById("password").value;
+// 	if (utils.isEmpty(ctlVMUserName) || utils.isBlank(ctlVMUserName)) {
+// 		message['ctlVMUserName'] = 'Controller VM log in User name cannot be empty';
+// 	}
+// 	if (utils.isEmpty(ctlVMPassword) || utils.isBlank(ctlVMPassword)) {
+// 		message['ctlVMPassword'] = 'Controller VM log in Password cannot be empty';	
+// 	}
+
+// 	if($.isEmptyObject(message) === false) {
+
+// 	}
 
 
-<script type="text/javascript">
-$('#ctlvmLoginSubmit').click(validateCtl);
+// }
 
-function validateCtl() {
-
-	var errorMsg = {};
-	var ctlVMUserName = $("#ctlvmUsernameLogin").val();
-	console.log("ctlVMUserName" + ctlVMUserName);
-	debugger;
-	var ctlVMPassword = $("#ctlvmPasswordLogin").val();
-	console.log("ctlVMPassword" + ctlVMPassword);
-
-		if (ctlVMUserName.length || ctlVMUserName != null) {
-		message['ctlVMUserName'] = 'Controller VM log in User name cannot be empty';
-	}
-	if (ctlVMPassword.length || ctlVMPassword != null) {
-		message['ctlVMPassword'] = 'Controller VM log in Password cannot be empty';	
-	}
-
-	if($.isEmptyObject(message) === false) {
-		console.log("msg" + message);
-	}
-
-}
-
-
-</script>
+// </script>
 </body>
 </html>
