@@ -24,7 +24,7 @@
     "express": "*",
     "cookie-parser": "*",
     "body-parser": "*",
-    
+    "ejs": "*"
 
   } 
 }
